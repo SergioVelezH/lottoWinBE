@@ -3,7 +3,7 @@ const { Sequelize } = require("sequelize");
 
 const GameModel = require("./models/games");
 const UserModel = require("./models/user");
-const PrizeModel = require("./models/prize")
+const PrizeModel = require("./models/prize");
 
 const fs = require("fs");
 const path = require("path");
@@ -47,6 +47,8 @@ PrizeModel(sequelize);
 // Para relacionarlos hacemos un destructuring
 const { Game, User, Prize } = sequelize.models;
 
+Game.belongsToMany(Prize, { as: "prizes", through: "game_prize" });
+Prize.belongsToMany(Game, { as: "games", through: "game_prize" });
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');

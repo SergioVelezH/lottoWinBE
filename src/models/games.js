@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
   sequelize.define(
-    "Game", // Usa Game con la primera letra en mayúscula
+    "Game", 
     {
       id: {
         type: DataTypes.UUID,
@@ -14,7 +14,7 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       nft: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false,
       },
       image: {
@@ -22,6 +22,10 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       usdt: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      size: {
         type: DataTypes.STRING,
         allowNull: false,
       },
